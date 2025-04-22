@@ -1,0 +1,417 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
+
+.hidden {
+    display: none !important;
+}
+
+.account__page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    font-family: "Fira Sans", sans-serif;
+    color: #303030;
+    padding-top: 50px;
+}
+
+.account__user-info-container {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+
+    .account__user-info-container h3 {
+        text-decoration: underline;
+        text-underline-offset: 8px;
+        text-decoration-thickness: 1.5px;
+        margin-bottom: 18px;
+        font-weight: 450;
+    }
+
+    .account__user-info-container span {
+        font-weight: 450;
+    }
+
+.account__personal-info > div,
+.account__tariff > div {
+    display: flex;
+}
+
+    .account__tariff-date {
+        flex-direction: column;
+    }
+
+.account__personal-info > div p,
+.account__tariff > div p:not(.account__tariff-date p) {
+    padding-left: 12px;
+}
+
+.account__personal-info,
+.account__tariff,
+.account__payments-info {
+    padding: 25px 40px;
+    background-color: #EEF7FF;
+    border: 2px solid #EEE8A9;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.account__personal-info {
+    width: 60%;
+}
+
+.account__tariff {
+    width: 38%;
+}
+
+.account__payments-info {
+    width: 85%;
+    margin-top: 35px;
+}
+
+    .account__payments-info h5,
+    .report-generation-container h5 {
+        font-weight: 400;
+    }
+
+.account__payments-info div {
+    display: flex;
+    justify-content: space-between;
+}
+
+    .account__payments-info div a {
+        border: 2px solid #239CDD;
+        border-radius: 15px;
+        padding: 7px 15px;
+        background-color: #239CDD;
+        color: white !important;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        font-size: clamp(14px, 1.1vw, 17px);
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+    }
+
+    .account__payments-info > div > h5 span {
+        padding-left: 20px;
+        font-size: 22px;
+    }
+
+    .account__payments-info .fa-check-circle {
+        color: #8ee681;
+        font-size: 30px;
+        padding-right: 10px;
+    }
+
+    .account__payments-info .fa-exclamation-circle {
+        color: #e3dc96;
+        font-size: 30px;
+        padding-right: 10px;
+    }
+
+.account_meter-readings {
+    width: 85%;
+    margin-top: 50px;
+}
+
+.account_meter-readings h3{
+    font-weight: 400;
+}
+
+.account_meter-readings table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #A7A7A7;
+    border-radius: 20px;
+    border-left-width: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.account__payments thead th,
+.account_meter-readings table thead th {
+    font-weight: 450;
+    font-size: clamp(13px, 1.3vw, 18px);
+}
+
+.account__payments tr,
+.account_meter-readings table tr {
+    height: 55px;
+}
+
+    .account__payments th,
+    .account__payments td,
+    .account_meter-readings table th,
+    .account_meter-readings table td {
+        text-align: center;
+        border-top: 1px solid #A7A7A7;
+        border-left: 1px solid #A7A7A7;
+    }
+
+    .account__payments tbody:first-child tr:first-child td,
+    .account__payments thead:first-child tr:first-child th,
+    .account_meter-readings table tbody:first-child tr:first-child td,
+    .account_meter-readings table thead:first-child tr:first-child th {
+        border-top-width: 0;
+    }
+
+        .account__payments thead:first-child tr:first-child td:first-child,
+        .account__payments thead:first-child tr:first-child th:first-child,
+        .account_meter-readings table thead:first-child tr:first-child td:first-child,
+        .account_meter-readings table thead:first-child tr:first-child th:first-child {
+            border-top-left-radius: 20px;
+        }
+
+    .account__payments tbody:last-child tr:last-child td:first-child,
+    .account__payments tbody:last-child tr:last-child th:first-child,
+    .account_meter-readings table tbody:last-child tr:last-child td:first-child,
+    .account_meter-readings table tbody:last-child tr:last-child th:first-child {
+        border-bottom-left-radius: 1rem;
+    }
+
+.account__modal-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.account__modal-container {
+    width: 50%;
+    background: ghostwhite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    padding: 15px 15px 30px 40px;
+    border-radius: 20px;
+}
+
+#closeModalBtn {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid #005B8C;
+    align-self: end;
+    cursor: pointer;
+    margin: 0px;
+}
+
+    #closeModalBtn .cross-line {
+        position: absolute;
+        width: 16px;
+        height: 4px;
+        border-radius: 2px;
+        background: #005B8C;
+        transform-origin: center;
+        transform: rotate(45deg);
+    }
+
+        #closeModalBtn .cross-line:nth-child(2) {
+            transform: rotate(-45deg);
+        }
+
+.account__modal-container .account__modal-send-btn {
+    border: none;
+    border-radius: 15px;
+    padding: 8px 18px;
+    background-color: #005B8C;
+    color: white !important;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    font-size: clamp(14px, 1.1vw, 17px);
+    margin-left: 20px;
+    text-decoration: none;
+    align-self: end;
+}
+
+.account__modal-container h2 {
+    font-weight: 400;
+    margin-bottom: 25px;
+}
+
+.account__modal-container > div {
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    margin-bottom: 17px;
+    position: relative;
+}
+
+.account__modal-container > div p{
+    margin: 0px;
+    padding-right: 15px;
+}
+
+    .account__modal-container > div input {
+        border-radius: 10px;
+        padding: 1px 8px;
+        border-width: 1px;
+    }
+
+.account__modal-container .fa-info-circle {
+    color: #005B8C;
+    font-size: 20px;
+    cursor: pointer;
+    align-self: end;
+}
+
+.account__tooltip {
+    visibility: hidden;
+    background-color: white;
+    padding: 3px 10px;
+    border: 1px solid silver;
+    border-radius: 10px;
+    font-size: clamp(10px, 0.9vw, 13px);
+    width: 450px;
+    margin-left: 8px;
+    opacity: 0.4;
+    transition: all 0.5s ease-in-out;
+}
+
+.account__modal-container .fa-info-circle:hover + .account__tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.account__validation-error {
+    visibility: hidden;
+    font-size: clamp(10px, 0.9vw, 13px);
+    padding-left: 10px;
+    color: #F76969;
+}
+
+.disabled_button {
+    background-color: #b8b8b8 !important;
+}
+
+.account__modal-container .billing-period {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 1px;
+}
+
+.account__modal-sum-line {
+    color: #303030;
+    margin: 12px 0px;
+    height: 1px;
+}
+
+#costPreview {
+    font-weight: 450;
+}
+
+.fa-arrow-circle-down {
+    font-size: 20px !important;
+    margin-right: 8px;
+}
+
+.payments-and-reports-container {
+    width: 85%;
+    margin: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+}
+
+    .payments-and-reports-container > h3 {
+        font-weight: 400;
+        margin: 0;
+    }
+
+    .payments-and-reports-container > div {
+        width: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
+
+.account__payments {
+    width: 45%;
+    margin-top: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #A7A7A7;
+    border-radius: 20px;
+    border-left-width: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.report-generation-container {
+    width: 50%;
+    margin-top: 20px;
+}
+
+    .report-generation-container > div {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        padding-top: 10px;
+    }
+
+        .report-generation-container > div > form {
+            display: flex;
+            flex-direction: row;
+            margin: 10px 0px 30px;
+        }
+
+        .report-generation-container > div p {
+            padding-right: 15px;
+            margin: 0px;
+        }
+
+        .report-generation-container > div input {
+            margin-right: 35px;
+            border-radius: 7px;
+            padding: 2px 8px;
+        }
+
+.report-generation-download-buttons button {
+    border: 2px solid #239CDD;
+    border-radius: 15px;
+    padding: 5px 15px;
+    background-color: #239CDD;
+    color: white !important;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    font-size: clamp(14px, 1.1vw, 17px);
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.report-generation-download-buttons button:nth-of-type(2){
+    margin-left: 20px;
+}
+
+    .report-generation-download-buttons button:hover,
+    .account__payments-info > div > button:hover {
+        background-color: #1184c2;
+        text-shadow: none;
+    }
+
+#periodValidationError {
+    color: #e47480;
+}

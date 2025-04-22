@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Tariff>
+
+@{
+    ViewData["Title"] = "Тарифи";
+}
+
+<div class="tariffs-page-container">
+    <h1>Тарифні плани на газопостачання</h1>
+    <div class="tariffs__tariffs-container">
+        <div class="tariffs__tariff-card">
+            <h2>Фіксований</h2>
+            <hr />
+            <div class="tariffs__tariff-description">
+                <i class="fa fa-check-circle"></i>
+                <p>
+                    Незалежно від сезонних коливань цін на ринку, ви платите фіксовану суму за кубічний метр газу
+                </p>
+            </div>
+            <div class="tariffs__tariff-description">
+                <i class="fa fa-check-circle"></i>
+                <p>
+                    Сплачуєте по факту споживання
+                </p>
+            </div>
+            <div class="tariffs__tariff-description">
+                <i class="fa fa-check-circle"></i>
+                <p>
+                    Одна фіксована ставка для всіх кубометрів спожитого газу
+                </p>
+            </div>
+            <h5>Ціна: @Model.Where(t => t.Name == "Фіксований").First().CostPerGasUnit грн за куб.м</h5>
+        </div>
+        <div class="tariffs__tariff-card">
+            <h2>Пільговий</h2>
+            <hr />
+            <div class="tariffs__tariff-description">
+                <i class="fa fa-check-circle"></i>
+                <p>
+                    Державна підтримка для домогосподарств, що мають право на субсидії та пільги
+                </p>
+            </div><div class="tariffs__tariff-description">
+                <i class="fa fa-check-circle"></i>
+                <p>
+                    Сплачуєте по факту споживання
+                </p>
+            </div><div class="tariffs__tariff-description">
+                <i class="fa fa-check-circle"></i>
+                <p>
+                    Для клієнтів, які відповідають умовам програми субсидій
+                </p>
+            </div>
+            <h5>Ціна: @Model.Where(t => t.Name == "Пільговий").First().CostPerGasUnit грн за куб.м</h5>
+        </div>
+    </div>
+    <div class="tariffs__attention-container">
+        <div>
+            <i class="fa fa-exclamation-circle"></i>
+            <h3>Звертаємо Вашу увагу</h3>
+        </div>
+        <p>У разі якщо показники лічильника не були подані до останнього дня поточного місяця, то плата за газ буде нарахована згідно з середньостатистичними показниками споживання газу по країні та за ціною встановленою тарифним планом “Фіксований”. </p>
+    </div>
+    <div class="tariffs__subsidy">
+        <div>
+            <h4>Кроки для отримання субсидії:</h4>
+            <ol>
+                <li>Зверніться до центру обслуговування клієнтів</li>
+                <li>Подайте необхідні документи</li>
+                <li style="list-style: none;">
+                    Для отримання субсидії вам знадобиться наступний перелік документів:
+                    <ul>
+                        <li>Заява на отримання субсидії</li>
+                        <li>Паспорт та ідентифікаційний код</li>
+                        <li>Довідка про доходи</li>
+                        <li>Документ про право власності на житло</li>
+                    </ul>
+                </li>
+                <li value=3>Отримайте рішення про призначення субсидії</li>
+            </ol>
+        </div>
+        <img src="~/images/documents.jpg"/>
+    </div>
+</div>

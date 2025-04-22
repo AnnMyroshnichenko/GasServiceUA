@@ -1,0 +1,9 @@
+﻿@{
+    ViewData["Title"] = "Оплата";
+}
+
+<div class="paypal-page-container">
+    <img src="~/images/successful_payment.png"/>
+    <h1 class="paypal-payment-success">Оплата пройшла успішно!</h1>
+    <a class="paypal-payment-success-link" href="@Url.Action("Index", "UserAccount")">Повернутися в особистий кабінет</a>
+</div>

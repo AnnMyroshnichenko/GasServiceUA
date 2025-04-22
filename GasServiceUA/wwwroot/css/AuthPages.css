@@ -1,0 +1,147 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
+
+.hidden{
+    display: none;
+}
+
+.auth__page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding: 6vh 0vh;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.auth__form-container {
+    width: 45%;
+    flex: 1 1 auto;
+}
+
+    .auth__form-container form {
+        padding: 35px 60px;
+        border: 1px solid #239CDD;
+        border-radius: 20px;
+        background-color: #F6FBFF;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+    .auth__form-container h2 {
+        text-align: center;
+        color: #239CDD;
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 500;
+        font-size: clamp(20px, 3vw, 35px);
+    }
+
+    .auth__form-container hr {
+        color: #239CDD;
+        height: 2px;
+    }
+
+.auth__form-field {
+    margin-bottom: 15px;
+}
+
+    .auth__form-field input,
+    .auth__form-field label {
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(14px, 1.2vw, 21px);
+        color: #35393b;
+    }
+
+    .auth__form-field input {
+        border: 1px solid #239CDD;
+        border-radius: 10px;
+        padding: 3px 7px;
+    }
+
+    .auth__form-field label{
+        padding-left: 3px;
+        padding-bottom: 2px;
+    }
+
+.auth__form-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+    .auth__form-buttons-container button {
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(16px, 1.3vw, 24px);
+        color: white;
+        text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+        width: 35%;
+        min-width: fit-content;
+        padding: 5px 10px;
+        margin: 0px 10px;
+        border: 1px solid #239CDD;
+        border-radius: 20px;
+        background-color: #239CDD;
+        transition: background-color 0.3s ease;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+
+        .auth__form-buttons-container button:hover {
+            background-color: #1184c2;
+            text-shadow: none;
+        }
+
+.auth__register-login-link{
+    font-family: "Fira Sans", sans-serif;
+    font-size: clamp(15px, 1.3vw, 22px);
+    color: #239CDD;
+    text-align: center;
+    padding-top: 23px;
+    line-height: 25px;
+}
+
+.auth__register-login-link a{
+    font-family: "Fira Sans", sans-serif;
+    font-size: clamp(15px, 1.3vw, 22px);
+    color: #239CDD;
+}
+
+.auth__image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    flex: 1 1 auto;
+}
+
+.auth__image img{
+    width: 100%;
+    padding: 0px 0px 0px 80px;
+}
+
+.auth__register-confirm {
+    padding-top: 10vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+    .auth__register-confirm h1 {
+        font-family: "Fira Sans", sans-serif;
+        font-size: 35px;
+        padding-bottom: 10px;
+        color: #274d78;
+    }
+
+    .auth__register-confirm p {
+        font-family: "Fira Sans", sans-serif;
+        font-size: 18px;
+        color: #274d78;
+    }
+
+.auth__register-confirm img {
+    width: 45%
+}

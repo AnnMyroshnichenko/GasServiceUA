@@ -1,0 +1,71 @@
+﻿@model GasServiceUA.Areas.UserAccount.Models.MeterReadingsReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Звіт по показниках лічильника</title>
+        <link rel='stylesheet' href='~/css/Reports.css' type='text/css' media='all' />
+    </head>
+    <body>
+        <div class="report__page-container">
+            <div class="report__header">
+                <div class="report__logo-container">
+                    <img src="~/images/logo.png" />
+                </div>
+                <div class="report__header-user-info">
+                    <p>Власник рахунку: @Model.User.Surname @Model.User.Name @Model.User.Patronymic</p>
+                    <p>Номер лічильника: @Model.User.AccountNumber</p>
+                    <p>Адреса: м. @Model.User.City, @Model.User.CityDistrict р-н.
+                        <br /> вул. @Model.User.Street, буд. @Model.User.BuildingNumber</p>
+                        <br />
+                    <p>Видано: ТОВ "GasServiceUA"</p>
+                <p>@DateTime.Now.ToString("dd.MM.yyyy HH:mm")</p>
+                </div>
+            </div>
+            <h1>Звіт по показниках лічильника за період з @Model.FromDate.ToString("dd.MM.yyyy") по @Model.ToDate.ToString("dd.MM.yyyy")</h1>
+            <table class="report__table">
+                <thead>
+                    <tr>
+                        <th>Початкова дата</th>
+                        <th>Кінцева дата</th>
+                        <th>Початкові дані лічильника</th>
+                        <th>Кінцеві дані лічильника</th>
+                        <th>Сума до оплати, грн</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.MeterReadings.Any())
+                    {
+                        @foreach (var meterReading in Model.MeterReadings)
+                        {
+                            <tr>
+                                <td>@meterReading.StartDate.ToString("dd.MM.yyyy")</td>
+                                <td>@meterReading.EndDate.ToString("dd.MM.yyyy")</td>
+                                <td>@meterReading.StartMeterReading</td>
+                                <td>@meterReading.EndMeterReading</td>
+                                <td>@Model.Bills.Where(x => x.MeterReadingsId == meterReading.MeterReadingsId).First().Cost</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan=5 style="height: 100px;">
+                                Показники лічильника за даний період не були подані
+                            </td>
+                            <td style="border: none"></td>
+                            <td style="border: none"></td>
+                            <td style="border: none"></td>
+                            <td style="border: none"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

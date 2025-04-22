@@ -1,0 +1,71 @@
+﻿*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.report__page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 100px;
+}
+
+    .report__page-container h1 {
+        font-size: 20px;
+        text-align: center;
+        padding-top: 70px;
+    }
+
+    .report__header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+.report__logo-container {
+    width: 160px;
+    height: auto;
+}
+
+    .report__logo-container img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+.report__header-user-info {
+    font-size: 16px;
+    line-height: 2;
+}
+
+.report__table {
+    margin-top: 40px;
+    border: 1px solid #A7A7A7;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+    .report__table thead th {
+        font-weight: 450;
+        font-size: 18px;
+    }
+
+    .report__table tr {
+        height: 55px;
+    }
+
+    .report__table th,
+    .report__table td {
+        text-align: center;
+        border: 1px solid #A7A7A7;
+    }
+
+
+.payment_history_table {
+    width: 55%;
+}

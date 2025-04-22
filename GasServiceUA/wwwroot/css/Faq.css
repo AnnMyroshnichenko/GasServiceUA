@@ -1,0 +1,100 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
+
+.faq-page-continer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    font-family: "Fira Sans", sans-serif;
+}
+
+    .faq-page-continer > h1 {
+        font-size: clamp(19px, 2.5vw, 37px);
+        color: #005B8C;
+        padding-top: 6vh;
+    }
+
+#accordion {
+    width: 60%;
+}
+
+    #accordion h3 {
+        font-size: clamp(14px, 1.5vw, 22px);
+        color: #005B8C;
+        padding-top: 33px;
+        padding-bottom: 3px;
+    }
+
+    #accordion button {
+        font-size: clamp(13px, 1.2vw, 16px);
+        color: #35393b;
+        font-weight: 400;
+        text-decoration: none;
+    }
+
+    #accordion .card-body {
+        font-size: clamp(13px, 1.2vw, 16px);
+    }
+
+    #accordion .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #F3F3F3;
+        padding: 12px 20px;
+    }
+
+        #accordion .card-header i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+        .faq__contacts-container {
+            width: 60%;
+            margin: 60px 0px;
+            padding: 25px 0px;
+            background-color: #EEF7FF;
+            border: 2px solid #EEE8A9;
+            border-radius: 20px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            font-family: "Fira Sans", sans-serif;
+            color: #35393b;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+.faq__contacts-container > div {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    padding-top: 25px;
+}
+
+    .faq__contacts-container h2 {
+        font-size: clamp(15px, 1.5vw, 26px);
+        font-weight: 400;
+    }
+
+    .faq__contacts-container h5 {
+        font-size: clamp(13px, 1.2vw, 20px);
+        padding-bottom: 7px;
+    }
+
+    .faq__contacts-container h5 i{
+        font-size: clamp(13px, 1.2vw, 20px);
+        padding-right: 7px;
+    }
+
+    .faq__contacts-container p {
+        font-size: clamp(11px, 1.1vw, 18px);
+    }

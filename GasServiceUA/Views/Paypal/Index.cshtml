@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Оплата";
+}
+
+<div class="paypal-page-container">
+    <h1>Оплата рахунків за газопостачання</h1>
+    <p>Вкажіть суму оплати в гривнях</p>
+    <input type="number" min="0.01" name="paymentSum" id="paymentSum" />
+    <p class="paypal-page-attention">
+        <span>Увага! </span>
+        Сума, яку ви вказали, буде автоматично конвертована в долари США за актуальним курсом на момент оплати та списана з Вашого рахунку.
+    </p>
+    <div class="paypal-container">
+        <div id="paypal-button-container"></div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://www.paypal.com/sdk/js?client-id=@ViewBag.ClientId"></script>
+
+    <script>
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'silver',
+                tagline: 'false'
+            },
+            createOrder: (data, actions) => {
+                var paymentSum = document.getElementById('paymentSum').value;
+                return fetch("@Url.Action("Order")?paymentSum=" + paymentSum.toString(), {
+                    method: "post",
+                }).then((response) => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw error; });
+                    }
+
+                    return response.json();
+                }).then((order) => order.id)
+                .catch(error => alert(error.message));
+            },
+            onApprove: (data, actions) => {
+                var paymentSum = document.getElementById('paymentSum').value;
+                return fetch(`@Url.Action("Capture")?orderId=${data.orderID}&paymentSum=${paymentSum}`, {
+                    method: "post",
+                }).then((response) => {
+                    if (!response.ok) {
+                        return response.json().then(error => { throw error; });
+                    }
+
+                    window.location.href = "@Url.Action("Success")";
+                }).catch(error => alert(error.message));
+            }
+        }).render('#paypal-button-container');
+    </script>
+}

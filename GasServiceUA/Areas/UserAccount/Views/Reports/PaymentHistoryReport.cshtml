@@ -1,0 +1,64 @@
+﻿@model GasServiceUA.Areas.UserAccount.Models.PaymentHistoryReportViewModel
+
+@{
+    Layout = "~/Views/Shared/_CleanLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Історія платежів</title>
+    <link rel='stylesheet' href='~/css/Reports.css' type='text/css' media='all' />
+</head>
+<body>
+    <div class="report__page-container">
+        <div class="report__header">
+            <div class="report__logo-container">
+                <img src="~/images/logo.png" />
+            </div>
+            <div class="report__header-user-info">
+                <p>Власник рахунку: @Model.User.Surname @Model.User.Name @Model.User.Patronymic</p>
+                <p>Номер лічильника: @Model.User.AccountNumber</p>
+                <p>
+                    Адреса: м. @Model.User.City, @Model.User.CityDistrict р-н.
+                    <br /> вул. @Model.User.Street, буд. @Model.User.BuildingNumber
+                </p>
+                <br />
+                <p>Видано: ТОВ "GasServiceUA"</p>
+                <p>@DateTime.Now.ToString("dd.MM.yyyy HH:mm")</p>
+            </div>
+        </div>
+        <h1>Історія платежів за газопостачання у період з @Model.FromDate.ToString("dd.MM.yyyy") по @Model.ToDate.ToString("dd.MM.yyyy")</h1>
+        <table class="report__table payment_history_table">
+            <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Сума оплати, грн</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Payments.Any())
+                {
+                    @foreach (var payment in Model.Payments)
+                    {
+                        <tr>
+                            <td>@payment.Date.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@payment.Sum</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan=2 style="height: 100px;">
+                            Протягом вказаного періоду оплата за газопостачання не проводилася
+                        </td>
+                        <td style="border: none"></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

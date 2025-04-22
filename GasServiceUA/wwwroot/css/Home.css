@@ -1,0 +1,188 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
+
+.home__page-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+.in-view{
+    animation: fade 1s 0.7s both;
+}
+
+@keyframes fade{
+    0% {
+        opacity: 0;
+        transform: translate(0, 1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+}
+
+.home__hero-container {
+    height: 95vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #C5E3FF;
+}
+
+.home__hero-text-container {
+    font-family: "Fira Sans", sans-serif;
+    color: #35393b;
+    width: 50%;
+    padding: 0px 10px 0px 70px;
+}
+
+    .home__hero-text-container h1 {
+        font-size: clamp(22px, 3.7vw, 60px);
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .home__hero-text-container span {
+        color: #005B8C;
+    }
+
+    .home__hero-text-container h4 {
+        font-size: clamp(17px, 1.3vw, 23px);
+        padding: 70px 70px 30px 0px;
+    }
+
+    .home__hero-text-container a,
+    .home__banner .home__banner-text-container a {
+        border: 2px solid #239CDD;
+        border-radius: 15px;
+        padding: 12px 25px;
+        background-color: #239CDD;
+        color: white !important;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+        font-size: clamp(14px, 1.1vw, 17px);
+        text-decoration: none;
+    }
+
+.home__hero-container img {
+    object-fit: contain;
+    width: 50%;
+}
+
+.home__cards-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    padding-top: 90px;
+}
+
+.home__card {
+    width: 25%;
+    padding: 35px 25px;
+    background-color: #EEF7FF;
+    border: 2px solid #EEE8A9;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-family: "Fira Sans", sans-serif;
+    color: #35393b;
+}
+
+    .home__card h2 {
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: clamp(20px, 2.9vw, 35px);
+    }
+
+    .home__card h5 {
+        text-align: center;
+        padding-bottom: 10px;
+        font-size: clamp(16px, 1.2vw, 22px);
+    }
+
+.home__about-company-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding-top: 90px;
+}
+
+    .home__about-company-container p {
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(14px, 1.5vw, 20px);
+        color: #35393b;
+        line-height: 1.9;
+    }
+
+.home__about-company-container img {
+    width: 45%;
+    margin-left: 50px;
+}
+
+.home__companies-logos-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding-top: 90px;
+}
+
+    .home__companies-logos-container img{
+        width: 280px;
+    }
+
+    .home__companies-logos-container > div {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    .home__companies-logos-container > div > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .home__banner {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        width: 80%;
+        margin-top: 80px;
+        margin-bottom: 70px;
+        padding: 5px 25px;
+        background-color: #EEF7FF;
+        border: 2px solid #EEE8A9;
+        border-radius: 20px;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        font-family: "Fira Sans", sans-serif;
+        color: #35393b;
+    }
+
+.home__banner img {
+    width: 45%;
+}
+
+    .home__banner .home__banner-text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home__banner .home__banner-text-container h3 {
+        font-size: clamp(18px, 2.1vw, 35px);
+        color: #005B8C;
+        padding-bottom: 15px;
+    }
+
+    .home__banner .home__banner-text-container p {
+        font-size: clamp(15px, 5vw, 20px);
+        color: #005B8C;
+        padding-bottom: 25px;
+    }

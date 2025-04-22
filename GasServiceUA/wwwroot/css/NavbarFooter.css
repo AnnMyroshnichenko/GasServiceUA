@@ -1,0 +1,100 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
+
+.navbar {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.7px);
+    -webkit-backdrop-filter: blur(6.7px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin: 0px !important;
+}
+
+.navbar-brand div {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    width: fit-content;
+}
+
+    .navbar-brand h1 {
+        font-family: "Fira Sans", sans-serif;
+        font-size: clamp(15px, 1.5vw, 19px);
+        color: #005B8C;
+        text-decoration: none;
+        vertical-align: middle;
+    }
+
+    .navbar-brand img {
+        width: 160px;
+        object-fit: contain;
+        margin-right: 10px;
+    }
+
+.nav-item {
+    font-family: "Fira Sans", sans-serif;
+    font-size: clamp(15px, 1.5vw, 17px);
+}
+
+    .nav-item .nav-link {
+        color: #274d78 !important;
+        text-decoration: none;
+    }
+
+.navbar-register-login {
+    border: 2px solid #005B8C;
+    border-radius: 20px;
+    padding: 0px 7px;
+}
+
+    .navbar-register-login#login-btn {
+        background-color: #005B8C;
+        margin-left: 1vw;
+    }
+
+        .navbar-register-login#login-btn #login {
+            color: white !important;
+        }
+
+.footer > div{
+    display: flex;
+    flex-direction: row;
+    padding-right: 2.5%;
+    padding-left: 2.5%;
+}
+
+.footer__top-line {
+    width: 95%;
+    margin: auto;
+    height: 2px;
+}
+
+.footer__social-medias-container {
+    display: flex;
+    flex-direction: row;
+    padding: 9px 0px;
+}
+
+    .footer__social-medias-container a {
+        text-decoration: none;
+    }
+
+    .footer__social-media-circle {
+        width: 35px;
+        height: 35px;
+        margin: 0px 5px;
+        border-radius: 50%;
+        background-color: #005B8C;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+.footer__social-media-circle i {
+    color: white;
+    font-size: 19px;
+}
+
+.fa-user-circle {
+    font-size: 23px !important;
+    margin-left: 9px;
+}

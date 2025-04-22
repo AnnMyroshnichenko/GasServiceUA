@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "GasServiceUA";
+}
+
+<div class="home__page-container">
+    <div class="home__hero-container">
+        <div class="home__hero-text-container">
+            <h1><span>Надійне постачання газу </span><br />для Вашого дому</h1>
+            <h4>Подавайте покази лічильника та оплачуйте рахунки онлайн легко та швидко</h4>
+            <a href="@Url.Action("Index", "UserAccount")">Дізнатися більше</a>
+        </div>
+        <img src="~/images/hero-picture.png"/>
+    </div>
+    <div class="home__cards-container animated">
+        <div class="home__card">
+            <h2>11,6 млн</h2>
+            <h5>домогосподарств довіряють нам</h5>
+        </div>
+        <div class="home__card">
+            <h2>20 років</h2>
+            <h5>надаємо свої послуги користувачам</h5>
+        </div>
+        <div class="home__card">
+            <h2>8 000+ км</h2>
+            <h5>газових мереж по 6 областям країни</h5>
+        </div>
+    </div>
+    <div class="home__about-company-container animated">
+        <p>
+            Наша компанія – один із провідних постачальників газу в країні. Ми забезпечуємо стабільне постачання газу споживачам за конкурентними цінами 
+            та з гнучкими умовами оплати. Наша команда висококваліфікованих фахівців постійно працює над покращенням якості послуг та обслуговування. 
+            Завдяки сучасним технологіям та інноваційним підходам, ми гарантуємо стабільне постачання газу, що відповідає всім міжнародним стандартам 
+            якості та безпеки.
+        </p>
+        <img src="~/images/factory.png"/>
+    </div>
+    <div class="home__companies-logos-container animated">
+        <h2>Компанії, з якимим ми співпрацюємо</h2>
+        <div>
+            <div>
+                <img src="~/images/company-logo-1.png" />
+                <img src="~/images/company-logo-2.png" />
+                <img src="~/images/company-logo-3.png" />
+                <img src="~/images/company-logo-4.png" />
+            </div>
+            <div>
+                <img src="~/images/company-logo-5.png" />
+                <img src="~/images/company-logo-6.png" />
+                <img src="~/images/company-logo-7.png" />
+            </div>
+        </div>
+    </div>
+    <div class="home__banner animated">
+        <img src="~/images/banner.png"/>
+        <div class="home__banner-text-container">
+            <h3>Економте час з нашим онлайн-сервісом!</h3>
+            <p>Подача даних лічильника, сплата рахунків та історія платежів доступні у Вашому особистому кабінеті в кілька кліків</p>
+            <a href="@Url.Action("Index", "UserAccount")">Спробувати зараз</a>
+        </div>
+    </div>
+</div>
+<script src="~/js/Home.js"></script>

@@ -1,0 +1,215 @@
+﻿@using GasServiceUA.Areas.UserAccount.Models
+@using GasServiceUA.TagHelpers
+@model UserAccountViewModel;
+
+@{
+    ViewData["Title"] = "Особистий кабінет";
+}
+
+<div class="account__page-container">
+    <div class="account__user-info-container">
+        <div class="account__personal-info">
+            <h3>Мої дані</h3>
+            <div>
+                <span>ПІБ власника рахунку: </span>
+                <p>@Model.User.Surname @Model.User.Name @Model.User.Patronymic</p>
+            </div>
+            <div>
+                <span>Номер особового рахунку: </span>
+                <p>@Model.User.AccountNumber</p>
+            </div>
+            <div>
+                <span>Адреса: </span>
+                <p>
+                    м. @Model.User.City, @Model.User.CityDistrict р-н.
+                    <br />вул. @Model.User.Street, буд. @Model.User.BuildingNumber
+                </p>
+            </div>
+        </div>
+        <div class="account__tariff">
+            <h3>Поточний тариф</h3>
+            <div>
+                <span>Назва тарифного плану: </span>
+                <p>@Model.User.Tariffs.Name</p>
+            </div>
+            <div>
+                <span>Ціна за 1 куб. м, грн: </span>
+                <p>@Model.User.Tariffs.CostPerGasUnit</p>
+            </div>
+            <div class="account__tariff-date">
+                <span>Термін дії тарифного плану: </span>
+                <div>
+                    <p>@Model.User.Tariffs.StartDate.ToString("dd.MM.yyyy") - @Model.User.Tariffs.EndDate.ToString("dd.MM.yyyy")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="account__payments-info">
+        @if(Model.User.Balance >= 0)
+        {
+            <div>
+                <h5>Сума до оплати станом на @DateTime.Today.ToString("dd.MM.yyyy"): <span>@string.Format("{0:F2}", @Model.User.Balance) грн</span></h5>
+                <a asp-area="" asp-controller="Paypal" asp-action="Index">Оплатити</a>
+            </div>
+        } else
+        {
+            <h5>Сума переплати станом на @DateTime.Today.ToString("dd.MM.yyyy"): <span>@string.Format("{0:F2}", @Model.User.Balance) грн</span></h5>
+        }
+        <hr />
+        @* if there are no meter readings for the current month show button to send them via modal window*@
+        @if (!Model.MeterReadings.Any(x => x.StartDate == new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1))) 
+        {
+            <div>
+                <h5><i class="fa fa-exclamation-circle"></i>Показники лічильника за поточний місяць ще не подано</h5>
+                <a id="openModalBtn">Відправити показники</a>
+            </div>
+            <div class="account__modal-overlay hidden" id="modal">
+                <div class="account__modal-container" id="modalContainer">
+                    <div id="closeModalBtn">
+                        <div class="cross-line"></div>
+                        <div class="cross-line"></div>
+                    </div>
+                    <h2>Показники лічильника</h2>
+                    <div>
+                        <div>
+                            <p>Період: <br /><billing-period class="billing-period"></billing-period></p>
+                        </div>
+                        <i class="fa fa-info-circle"></i>
+                        <div class="account__tooltip">
+                            <p>
+                                Якщо показники лічильника не були передані вчасно, то плата нараховується за середніми показниками споживання по країні.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Початкові дані лічильника:</p>
+                        <input type="number" id="startMeterReadings" min="1000000000" max="9999999999"/>
+                        <div class="account__validation-error" id="startMeterReadingError">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Кінцеві дані лічильника:</p>
+                        <input type="number" id="endMeterReadings" min="1000000000" max="9999999999" />
+                        <div class="account__validation-error" id="endMeterReadingError">
+                            <p></p>
+                        </div>
+                    </div>
+                    <hr class="account__modal-sum-line" />
+                    <div>
+                        <p>Сума до сплати:</p>
+                        <span id="costPreview">0 грн</span>
+                    </div>
+                    <button class="account__modal-send-btn disabled_button" id="sendMeterReadingsBtn" disabled=true>Відправити</button>
+                </div>
+            </div>
+        }
+        else
+        {
+            <h5><i class="fa fa-check-circle"></i>Показники лічильника за поточний місяць подано</h5>
+        }
+    </div>
+
+    <div class="account_meter-readings">
+        <h3>Нещодавні показники лічильника</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Початкова дата</th>
+                    <th>Кінцева дата</th>
+                    <th>Початкові дані лічильника</th>
+                    <th>Кінцеві дані лічильника</th>
+                    <th>Сума до оплати, грн</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.MeterReadings.Any())
+                {
+                    var meterReadingLimit = Model.MeterReadings.Count() >= 6 ? 6 : Model.MeterReadings.Count();
+                    @for (int i = 0; i < meterReadingLimit; i++)
+                    {
+                        <tr>
+                            <td>@Model.MeterReadings.ElementAt(i).StartDate.ToString("dd.MM.yyyy")</td>
+                            <td>@Model.MeterReadings.ElementAt(i).EndDate.ToString("dd.MM.yyyy")</td>
+                            <td>@Model.MeterReadings.ElementAt(i).StartMeterReading</td>
+                            <td>@Model.MeterReadings.ElementAt(i).EndMeterReading</td>
+                            <td>@Model.Bills.Where(x => x.MeterReadingsId == @Model.MeterReadings.ElementAt(i).MeterReadingsId).First().Cost</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan=5 style="height: 100px;">
+                            Показники лічильника не було подано
+                        </td>
+                        <td style="border: none"></td>
+                        <td style="border: none"></td>
+                        <td style="border: none"></td>
+                        <td style="border: none"></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="payments-and-reports-container">
+        <h3>Нещодавні платежі</h3>
+        <div>
+            <table class="account__payments">
+                <thead>
+                    <tr>
+                        <th>Дата</th>
+                        <th>Сума оплати, грн</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Payments.Any())
+                    {
+                        var paymentsCountLimit = Model.Payments.Count() >= 6 ? 6 : Model.Payments.Count();
+                        @for (int i = 0; i < paymentsCountLimit; i++)
+                        {
+                            <tr>
+                                <td>@Model.Payments.ElementAt(i).Date.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td>@Model.Payments.ElementAt(i).Sum</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan=2 style="height: 100px;">
+                                Платежі не здійснювалися
+                            </td>
+                            <td style="border: none"></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="report-generation-container">
+                <h5>Вкажіть період для формування звіту по показниках лічильника та історії платежів:</h5>
+                <div>
+                    <form name="reportGenerationForm">
+                        <p>з</p>
+                        <input name="fromDate" type="date" />
+                        <p>по</p>
+                        <input name="toDate" type="date" />
+                        <p class="hidden" id="periodValidationError">Невірно введений період</p>
+                    </form>
+                    <div class="report-generation-download-buttons">
+                        <button id="downloadMeterReadingsReport">
+                            <i class="fa fa-arrow-circle-down"></i> Звіт по показниках лічильника
+                        </button>
+                        <button id="downloadPaymentsHistory">
+                            <i class="fa fa-arrow-circle-down"></i> Історія платежів
+                        </button>
+                    </div> 
+                </div>
+            </div>
+        </div>   
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="~/js/UserAccount.js"></script>

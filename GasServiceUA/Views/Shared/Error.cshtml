@@ -1,0 +1,36 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Помилка";
+}
+<style>
+    .error-page-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: hidden;
+        font-family: "Fira Sans", sans-serif;
+        color: #274d78;
+        padding-top: 10vh;
+    }
+
+    h1, h4 {
+        color: #274d78;
+        font-family: "Fira Sans", sans-serif;
+    }
+
+    h1 {
+        margin-bottom: 50px;
+    }
+
+    h4 {
+        margin-bottom: 20px;
+    }
+</style>
+<div class="error-page-container">
+    <h1>Помилка</h1>
+    <h4>Під час обробки Вашого запиту сталася помилка</h4>
+    <a class="paypal-payment-success-link" href="@Url.Action("Index", "Home")">Повернутися на головну</a>
+</div>

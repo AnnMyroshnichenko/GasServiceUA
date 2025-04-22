@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: "Fira Sans", sans-serif;
+            font-size: 17px;
+            text-align: left;
+            color: #35393b;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #35393b;
+        }
+
+        p {
+            color: #35393b;
+            margin-bottom: 20px;
+        }
+
+        button {
+            display: inline-block;
+            padding: 10px 20px;
+            font: 400 "Fira Sans", sans-serif;
+            text-align: center;
+            text-decoration: none;
+            text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
+            background-color: #21B0C8;
+            color: #35393b;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #2B9FB1;
+            }
+    </style>
+</head>
+<body>
+    <h2>Вітання {userName}!</h2>
+    <p>
+        Дякуємо за реєстрацію на нашому сайті. Щоб підтвердити свою електронну пошту,
+        будь ласка, натисніть на кнопку нижче:
+    </p>
+    <a href="{activationLink}">
+        <button>Підтвердити електронну пошту</button>
+    </a>
+    <p>
+        Або скопіюйте та вставте це посилання у ваш браузер: 
+        <br />{activationLink}
+        <br /> <br />З найкращими побажаннями,
+               <br />Команда підтримки клієнтів GasServiceUA
+    </p>
+</body>
+</html>

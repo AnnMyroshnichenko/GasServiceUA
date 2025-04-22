@@ -1,0 +1,36 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Вхід в акаунт";
+}
+
+<div class="auth__page-container">
+    <div class="auth__form-container">
+        <form id="account" method="post">
+            <h2>Вхід в акаунт</h2>
+            <hr />
+            <div class="auth__form-field">
+                <label asp-for="Input.Email">Email</label>
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" data-val="true" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="auth__form-field">
+                <label asp-for="Input.Password">Пароль</label>
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" data-val="true" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="auth__form-buttons-container" id="registerBtnContainer">
+                <button class="auth__form-button" id="loginSubmit" type="submit">Увійти</button>
+            </div>
+            <h3 class="auth__register-login-link">Ще не маєте акаунту? <br /><a asp-page="./Register">Зареєструватися</a></h3>
+        </form>
+    </div>
+    <div class="auth__image">
+        <img src="~/images/Register-login.png" />
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
